@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ECF4E8;
+    display: flex;
+}
+
+.logo {
+    background-color: #93BFC7;
+    text-align: center;
+    align-content: center;
+    font-family: 'Josefin Slab';
+    color: #ECF4E8;
+    flex: 4;
+    height: 100vh;
+}
+
+.logo > h1 {
+    font-size: 5rem;
+}
+
+.content {
+    flex: 4;
+}
+
+input {
+    background-color: #ECF4E8;
+    padding: 0.2rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+.input-container {
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5rem;
+}
+
+.input-container > button {
+    font-size: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.display-container {
+    background-color: #ABE7B2;
+    height: 88.6vh;
+}
