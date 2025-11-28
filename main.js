@@ -5,6 +5,7 @@ const formTitle = document.getElementById("title");
 const formAuthor = document.getElementById("author");
 const formPages = document.getElementById("pages");
 const formRead = document.getElementById("read");
+let popup = document.getElementById("popup");
 
 function Book(formTitle, formAuthor, formPages, formRead) {
 	this.formTitle = formTitle;
@@ -21,6 +22,14 @@ function addBookToLibrary() {
 	formRead.checked;
 	const book = new Book(formTitle, formAuthor, formPages, formRead);
 	myLibrary.push(book);
+}
+
+function openPopup() {
+	popup.classList.add("open-popup");
+}
+
+function closePopup() {
+	popup.classList.remove("open-popup");
 }
 
 function displayBook() {
