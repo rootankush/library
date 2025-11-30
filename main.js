@@ -12,7 +12,7 @@ function Book(formTitle, formAuthor, formPages, formRead) {
 	this.formAuthor = formAuthor;
 	this.formPages = formPages;
 	this.formRead = formRead;
-	this.uuid = crypto.randomUUID();
+	this.formuuid = crypto.randomUUID();
 }
 
 function addBookToLibrary() {
@@ -39,14 +39,14 @@ function displayBook() {
 	const readStatus = document.createElement('p') 
 	const buttonDiv = document.createElement('div')
 	const toggleRead = document.createElement('button')
-	const removeRead = document.createElement('button')
+	const removeBook = document.createElement('button')
 
 	let text = document.createTextNode("Toggle Read")
 	let remove = document.createTextNode("Remove")
 
 	title.textContent = `${formTitle.value}`
-	author.textContent = `Author ${formAuthor.value}`
-	pages.textContent = `Pages ${formPages.value}`
+	author.textContent = `Author: ${formAuthor.value}`
+	pages.textContent = `Pages: ${formPages.value}`
 	if(formRead.checked === true) {
 		readStatus.textContent = "Already read"
 	}
@@ -55,19 +55,24 @@ function displayBook() {
 	}
 
 	toggleRead.append(text);
-	removeRead.append(remove);
+	removeBook.append(remove);
 
-	buttonDiv.append(toggleRead, removeRead)
+	buttonDiv.append(toggleRead, removeBook)
 
 	const card = document.createElement('div')
 	card.append(title, author, pages, readStatus, buttonDiv)
 
-	removeRead.addEventListener("click", () => {
+	removeBook.addEventListener("click", () => {
 		card.remove();
 	})
 
 	toggleRead.addEventListener("click", () => {
-
+		if(readStatus.textContent === "Already read"){
+			readStatus.textContent = "Haven't read yet";
+		}	
+		else{
+			readStatus.textContent = "Already read";
+		}
 	})
 
 	//styling dom elements
@@ -83,11 +88,11 @@ function displayBook() {
 	toggleRead.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.5)";
 
 	// style remove button
-	removeRead.style.background = "red";
-	removeRead.style.color = "#fff";
-	removeRead.style.padding = "0.5rem";
-	removeRead.style.borderRadius = "0.7rem";
-	removeRead.style.margin = "1rem 0.5rem";
+	removeBook.style.background = "red";
+	removeBook.style.color = "#fff";
+	removeBook.style.padding = "0.5rem";
+	removeBook.style.borderRadius = "0.7rem";
+	removeBook.style.margin = "1rem 0.5rem";
 
 	// style card
 	title.style.fontSize = "1.5rem";
@@ -106,7 +111,7 @@ function displayBook() {
 
 submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
-	addBookToLibrary()
-	displayBook()
+	addBookToLibrary();
+	displayBook();
 })
 
