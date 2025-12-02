@@ -32,52 +32,50 @@ function closePopup() {
 	popup.classList.remove("open-popup");
 }
 
-function displayBook() {
-	const title = document.createElement('h3') 
-	const author = document.createElement('p') 
-	const pages = document.createElement('p') 
-	const readStatus = document.createElement('p') 
-	const buttonDiv = document.createElement('div')
-	const toggleRead = document.createElement('button')
-	const removeBook = document.createElement('button')
+function displayBook(book) {
+	const title = document.createElement("h3");
+	const author = document.createElement("p");
+	const pages = document.createElement("p");
+	const readStatus = document.createElement("p");
+	const buttonDiv = document.createElement("div");
+	const toggleRead = document.createElement("button");
+	const removeBook = document.createElement("button");
 
-	let text = document.createTextNode("Toggle Read")
-	let remove = document.createTextNode("Remove")
+	let text = document.createTextNode("Toggle Read");
+	let remove = document.createTextNode("Remove");
 
-	title.textContent = `${formTitle.value}`
-	author.textContent = `Author: ${formAuthor.value}`
-	pages.textContent = `Pages: ${formPages.value}`
-	if(formRead.checked === true) {
-		readStatus.textContent = "Already read"
-	}
-	else {
-		readStatus.textContent = "Haven't read yet"
+	title.textContent = `${formTitle.value}`;
+	author.textContent = `Author: ${formAuthor.value}`;
+	pages.textContent = `Pages: ${formPages.value}`;
+	if (formRead.checked === true) {
+		readStatus.textContent = "Already read";
+	} else {
+		readStatus.textContent = "Haven't read yet";
 	}
 
 	toggleRead.append(text);
 	removeBook.append(remove);
 
-	buttonDiv.append(toggleRead, removeBook)
+	buttonDiv.append(toggleRead, removeBook);
 
-	const card = document.createElement('div')
-	card.append(title, author, pages, readStatus, buttonDiv)
+	const card = document.createElement("div");
+	card.append(title, author, pages, readStatus, buttonDiv);
 
 	removeBook.addEventListener("click", () => {
 		card.remove();
-	})
+	});
 
 	toggleRead.addEventListener("click", () => {
-		if(readStatus.textContent === "Already read"){
+		if (readStatus.textContent === "Already read") {
 			readStatus.textContent = "Haven't read yet";
-		}	
-		else{
+		} else {
 			readStatus.textContent = "Already read";
 		}
-	})
+	});
 
 	//styling dom elements
 
-	buttonDiv.style.justifyContent = "space-between"
+	buttonDiv.style.justifyContent = "space-between";
 
 	// style toggle Button
 	toggleRead.style.background = "#262d38ff";
@@ -99,19 +97,22 @@ function displayBook() {
 	card.style.background = "#393E46";
 	card.style.color = "#fff";
 	card.style.margin = "0.8rem";
-	card.style.border = "1px solid #ffffff"
-	card.style.borderRadius = "1rem"
-	card.style.padding = "1rem"
-	card.style.fontSize = "1rem"
-	card.style.textAlign = "start"
-	card.style.lineHeight = "2.5rem"
+	card.style.border = "1px solid #ffffff";
+	card.style.borderRadius = "1rem";
+	card.style.padding = "1rem";
+	card.style.fontSize = "1rem";
+	card.style.textAlign = "start";
+	card.style.lineHeight = "2.5rem";
 
-	display.appendChild(card)
+	display.appendChild(card);
 }
+
+const form = document.getElementById("form");
 
 submitBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 	addBookToLibrary();
 	displayBook();
-})
-
+	closePopup();
+	form.reset();
+});
