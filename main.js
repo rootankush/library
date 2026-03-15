@@ -7,12 +7,14 @@ const formPages = document.getElementById("pages");
 const formRead = document.getElementById("readStatus");
 let popup = document.getElementById("popup");
 
-function Book(formTitle, formAuthor, formPages, formRead) {
-	this.formTitle = formTitle;
-	this.formAuthor = formAuthor;
-	this.formPages = formPages;
-	this.formRead = formRead;
-	this.formuuid = crypto.randomUUID();
+class Book {
+	constructor({ formTitle, formAuthor, formPages, formRead }) {
+		this.formTitle = formTitle;
+		this.formAuthor = formAuthor;
+		this.formPages = formPages;
+		this.formRead = formRead;
+		this.formuuid = crypto.randomUUID();
+	}
 }
 
 function addBookToLibrary() {
@@ -32,7 +34,7 @@ function closePopup() {
 	popup.classList.remove("open-popup");
 }
 
-function displayBook(book) {
+function displayBook() {
 	const title = document.createElement("h3");
 	const author = document.createElement("p");
 	const pages = document.createElement("p");
