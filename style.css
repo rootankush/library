@@ -61,7 +61,7 @@ body {
 .popup {
 	text-align: center;
 	width: 20%;
-	height: 53vh;
+	height: 60vh;
 	background: #eeeeee;
 	position: absolute;
 	border-radius: 1rem;
@@ -118,4 +118,8 @@ body {
 .display-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
+}
+
+.error {
+	color: red;
 }
